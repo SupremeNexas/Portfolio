@@ -1,34 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=Great+Vibes&display=swap');
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --font-serif: "Instrument Serif", serif;
-  --font-sans: "Manrope", sans-serif;
-  --font-script: "Great Vibes", cursive;
+@layer base {
+  :root {
+    --color-obsidian: #030303;
+    --color-carbon: #0c0c0c;
+    --color-chalk: #fcfcfc;
+    --color-smoke: #8a8a8a;
+    --color-graphite: #1a1a1a;
+    --color-signal-white: #ffffff;
+    --color-compass-gold: #6f6759;
+  }
+
+  html {
+    background-color: var(--color-obsidian);
+    color: var(--color-chalk);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    /* Reverted to Inter as original design */
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-obsidian);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Hide scrollbar */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Apply to all, including focus states */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none; /* Zero outlines */
+  }
 }
 
-.liquid-glass {
-  background: rgba(0, 0, 0, 0.4);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
+.hero-heading {
+  color: var(--color-chalk);
+  /* Weight 400 requested in original */
+  font-weight: 400;
 }
-.liquid-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(180deg,
-    rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 20%,
-    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-    rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.3) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+
+.contact-btn {
+  background-color: var(--color-signal-white);
+  color: var(--color-obsidian);
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 500;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-btn:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.live-btn {
+  border: 1px solid var(--color-graphite);
+  border-radius: 8px;
+  color: var(--color-chalk);
+  padding: 10px 20px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.live-btn:hover {
+  background: var(--color-graphite);
+}
+
+.card-premium {
+  background: var(--color-carbon);
+  border: 1px solid var(--color-graphite);
+  border-radius: 24px;
+  transition: border-color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.card-premium:hover {
+  border-color: #333;
+}
+
+.glass-pill {
+  background: transparent;
+  border: 1px solid var(--color-graphite);
+  color: var(--color-smoke);
+  border-radius: 4px;
 }

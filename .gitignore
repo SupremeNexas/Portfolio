@@ -1,41 +1,37 @@
-# macOS
-.DS_Store
-
-# Claude
-.claude/
-
-# Obsidian
-.obsidian/
-!.obsidian/app.json
-!.obsidian/appearance.json
-!.obsidian/core-plugins.json
-!.obsidian/graph.json
-
 # Logs
+logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Environment variables
-.env
-.env.*
+node_modules
+dist
+dist-ssr
+*.local
 
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-build/
-
-# IDE
-.vscode/
-.idea/
-
-# Temporary files
-*.tmp
-*.swp
-
-# Next.js
-.next/
-out/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 .vercel
-*.tsbuildinfo
-next-env.d.ts
+.env*
+
+# Build and backup artifacts
+.next/
+.impeccable/
+.agents/
+agents/
+portfolio/
+certificates/
+knowledge/
+llmwiki/
+.docs/

@@ -1,73 +1,41 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'framer-motion';
 
-interface Certification {
-  id: number;
-  title: string;
-  issuer: string;
-  date: string;
-  description: string;
-}
-
-const certifications: Certification[] = [
-  { id: 1, title: 'Advanced React Patterns', issuer: 'Frontend Masters', date: '2026', description: 'Deep dive into advanced hooks, performance optimization, and composition patterns.' },
-  { id: 2, title: 'UI/UX Design Systems', issuer: 'Design Academy', date: '2026', description: 'Mastering component architecture, design tokens, and accessibility standards.' },
-  { id: 3, title: 'AI-Native Development', issuer: 'Anthropic Certification', date: '2026', description: 'Building agentic workflows and integrating LLMs into modern web applications.' },
+const certifications = [
+  { id: '1', title: 'OpenAI Foundations', issuer: 'OpenAI' },
+  { id: '2', title: 'OpenAI Agents and Models', issuer: 'OpenAI' },
+  { id: '3', title: 'Anthropic AI Fluency', issuer: 'Anthropic' },
+  { id: '4', title: 'C‍laude Code in Action', issuer: 'Anthropic' },
+  { id: '5', title: 'Claude Platform', issuer: 'Anthropic' },
+  { id: '6', title: 'Claude 101 & C‍laude Code 101', issuer: 'Anthropic' },
+  { id: '7', title: 'Claude Cowork', issuer: 'Anthropic' },
+  { id: '8', title: 'Civic & Social Service Internship (CSSI)', issuer: 'Nirvana Sangh Foundation' },
 ];
 
 export default function CertificationsSection() {
-  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
-
   return (
-    <section className="py-20 px-6 bg-[#0C0C0C] text-[#D7E2EA]">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-serif mb-12 text-center text-[#D7E2EA]">Certifications</h2>
+    <section id="certifications" className="pt-20 pb-10 bg-[#0C0C0C] overflow-hidden">
+      <h2 className="text-[#f3f3f3] text-center font-aeonik text-[44px] mb-16">
+        <a href="https://github.com/SupremeNexas/Portfolio/tree/main/portfolio/certificates" target="_blank" rel="noopener noreferrer" className="hover:underline">CERTIFICATIONS</a>
+      </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert) => (
-            <motion.button
-              key={cert.id}
-              className="card-premium p-8 rounded-[22px] cursor-pointer text-left w-full min-h-[120px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D7E2EA] touch-manipulation"
-              whileHover={{ scale: 1.05, rotateY: 5, rotateX: 2 }}
-              onClick={() => setSelectedCert(cert)}
+      <div className="flex overflow-hidden">
+        <motion.div
+          className="flex gap-8"
+          style={{ willChange: 'transform' }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        >
+          {[...certifications, ...certifications].map((cert, index) => (
+            <div
+              key={index}
+              className="card-premium p-8 rounded-xl flex-shrink-0 w-[300px] border border-[#212121]"
             >
-              <h3 className="text-xl font-semibold mb-2">{cert.title}</h3>
-              <p className="text-sm text-[#D7E2EA]/70 mb-4">{cert.issuer} • {cert.date}</p>
-            </motion.button>
+              <h3 className="text-[#f3f3f3] text-lg font-medium">{cert.title}</h3>
+              <p className="text-[#9c9c9c] text-sm mt-2">{cert.issuer}</p>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
-
-      <AnimatePresence>
-        {selectedCert && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-[1000] flex items-center justify-center p-6"
-            onClick={() => setSelectedCert(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-[#121212] border border-[#D7E2EA]/20 p-10 rounded-[22px] max-w-lg w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h2 className="text-3xl font-serif mb-4">{selectedCert.title}</h2>
-              <p className="text-lg text-[#D7E2EA]/80 mb-2">{selectedCert.issuer}</p>
-              <p className="text-sm text-[#D7E2EA]/60 mb-6">{selectedCert.date}</p>
-              <p className="text-[#D7E2EA]/90">{selectedCert.description}</p>
-              <button
-                className="mt-8 bg-[#D7E2EA] text-[#0C0C0C] px-6 py-2 rounded-full font-semibold"
-                onClick={() => setSelectedCert(null)}
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
