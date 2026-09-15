@@ -1,6 +1,9 @@
 # macOS
 .DS_Store
 
+# Claude
+.claude/
+
 # Obsidian
 .obsidian/
 !.obsidian/app.json
@@ -29,3 +32,10 @@ build/
 # Temporary files
 *.tmp
 *.swp
+
+# Next.js
+.next/
+out/
+.vercel
+*.tsbuildinfo
+next-env.d.ts

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "higgsfield-websites": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-websites/SKILL.md",
+      "computedHash": "527dc01892642ead378d342680108e3524cdf719b78657b19ccbed7ba3b40dd8"
+    }
+  }
+}
