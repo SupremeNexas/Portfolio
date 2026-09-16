@@ -5,12 +5,12 @@ const projects = [
   {
     number: '01',
     category: 'React, Vite, Node.js, Express, PostgreSQL, Prisma, Gemini AI SDK',
-    name: 'Expense Tracker',
+    name: 'Monerva',
     bullets: [
-      'Built a full-stack AI-native personal finance platform utilizing React, Vite, Node.js, Express, and PostgreSQL.',
-      'Integrated Gemini AI SDK to provide automated receipt parsing and data extraction via OCR with 98% accuracy.',
-      'Developed multi-workspace support with Prisma ORM for safe relational schema management and multi-account transactions.',
-      'Designed interactive expense analytics diagrams and dashboards optimized for high performance and low-latency interaction.'
+      'Built a full-stack AI-native healthcare analytics platform utilizing React, Vite, Node.js, Express, and PostgreSQL.',
+      'Integrated Gemini AI SDK to provide automated clinical document parsing and data extraction via OCR with 98% accuracy.',
+      'Developed multi-workspace support with Prisma ORM for safe relational schema management and multi-organization transactions.',
+      'Designed interactive clinical analytics diagrams and dashboards optimized for high performance and low-latency interaction.'
     ],
     images: {
       col1: [
@@ -19,7 +19,8 @@ const projects = [
       ],
       col2: '/projects/expense-3.png'
     },
-    github: 'https://github.com/SupremeNexas/Expense-Tracker'
+    github: 'https://github.com/SupremeNexas/Expense-Tracker',
+    website: 'https://www.monerva.com/'
   },
   {
     number: '02',
@@ -164,14 +165,25 @@ function ProjectCard({ project, index, totalCards }: { project: typeof projects[
             </div>
           </div>
 
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-[#212121] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-          >
-            GitHub Code
-          </a>
+          {project.website ? (
+            <a
+              href={project.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-[#212121] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+            >
+              Visit Website
+            </a>
+          ) : (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-[#212121] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+            >
+              GitHub Code
+            </a>
+          )}
         </div>
 
         {/* Info & Grid Column Layout */}
