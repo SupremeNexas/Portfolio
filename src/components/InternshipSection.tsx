@@ -112,8 +112,8 @@ function InternshipCard({ internship, index, totalCards }: { internship: typeof 
 
 export default function InternshipSection() {
   return (
-    <section id="internship" className="bg-[#0C0C0C] px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-6 relative z-10">
-      <h2 className="hero-heading font-black uppercase text-center text-5xl sm:text-6xl md:text-7xl leading-none mb-16 sm:mb-20 md:mb-28">
+    <section id="internship" className="bg-[#0C0C0C] px-5 sm:px-8 md:px-10 pt-12 sm:pt-16 md:pt-20 pb-4 relative z-10">
+      <h2 className="hero-heading font-black uppercase text-center text-5xl sm:text-6xl md:text-7xl leading-none mb-8 sm:mb-10 md:mb-12">
         Internship
       </h2>
 
