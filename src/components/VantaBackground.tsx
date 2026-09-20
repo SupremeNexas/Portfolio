@@ -43,9 +43,9 @@ export default function VantaBackground({
   useEffect(() => {
     let isMounted = true
 
-    // Function to load external scripts dynamically
-    const loadScript = (src: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
+    // Function to load external scripts dynamically with timeout
+    const loadScript = (src: string, timeout = 4000): Promise<void> => {
+      return new Promise((resolve) => {
         if (document.querySelector(`script[src="${src}"]`)) {
           resolve()
           return
@@ -53,8 +53,28 @@ export default function VantaBackground({
         const script = document.createElement('script')
         script.src = src
         script.async = true
-        script.onload = () => resolve()
-        script.onerror = (err) => reject(err)
+        let resolved = false
+        const timer = setTimeout(() => {
+          if (!resolved) {
+            resolved = true
+            resolve() // Gracefully resolve so app doesn't hang
+          }
+        }, timeout)
+
+        script.onload = () => {
+          if (!resolved) {
+            resolved = true
+            clearTimeout(timer)
+            resolve()
+          }
+        }
+        script.onerror = () => {
+          if (!resolved) {
+            resolved = true
+            clearTimeout(timer)
+            resolve()
+          }
+        }
         document.body.appendChild(script)
       })
     }

@@ -166,19 +166,28 @@ const GooeyNav = ({
 
   return (
     <div className="gooey-nav-container" ref={containerRef}>
-      <nav>
+      <nav aria-label="Main Navigation">
         <ul ref={navRef}>
-          {items.map((item, index) => (
-            <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {items.map((item, index) => {
+            const isExternal = item.href.startsWith('http') || item.href.endsWith('.pdf');
+            return (
+              <li key={index} className={activeIndex === index ? 'active' : ''}>
+                <a
+                  href={item.href}
+                  onClick={e => handleClick(e, index)}
+                  onKeyDown={e => handleKeyDown(e, index)}
+                  target={isExternal ? '_blank' : undefined}
+                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
-      <span className="effect filter" ref={filterRef} />
-      <span className="effect text" ref={textRef} />
+      <span className="effect filter" ref={filterRef} aria-hidden="true" />
+      <span className="effect text" ref={textRef} aria-hidden="true" />
     </div>
   );
 };

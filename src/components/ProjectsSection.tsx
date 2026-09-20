@@ -1,36 +1,36 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import ScrollStack, { ScrollStackItem } from './ScrollStack'
 
 const projects = [
   {
     number: '01',
-    category: 'React, Vite, Node.js, Express, PostgreSQL, Prisma, Gemini AI SDK',
+    category: 'React, Vite, TypeScript, Node.js, Express, PostgreSQL, Prisma, Google Gemini AI',
     name: 'Monerva',
     bullets: [
-      'Built a full-stack AI-native healthcare analytics platform utilizing React, Vite, Node.js, Express, and PostgreSQL.',
-      'Integrated Gemini AI SDK to provide automated clinical document parsing and data extraction via OCR with 98% accuracy.',
-      'Developed multi-workspace support with Prisma ORM for safe relational schema management and multi-organization transactions.',
-      'Designed interactive clinical analytics diagrams and dashboards optimized for high performance and low-latency interaction.'
+      'Built a full-stack AI-powered personal finance platform using React, Vite, Node.js, Express, PostgreSQL, and Prisma for transaction, budgeting, savings, credit-card, and shared-expense management.',
+      'Integrated Google Gemini for multimodal receipt analysis, automatically extracting transaction details from uploaded receipts and enabling AI-powered financial insights.',
+      'Engineered a multi-workspace architecture with Prisma and PostgreSQL, supporting isolated financial data, shared expenses, groups, settlements, and role-aware access.',
+      'Built an AI-powered Financial Document Vault with RAG, using local embeddings and PostgreSQL-based retrieval to answer questions from uploaded financial documents with source citations.',
+      'Developed interactive financial analytics dashboards for spending trends, budgets, cash flow, savings, and transaction insights with responsive, low-latency UI interactions.'
     ],
     images: {
       col1: [
-        '/projects/expense-1.png',
+        '/projects/expense-3.png',
         '/projects/expense-2.png'
       ],
-      col2: '/projects/expense-3.png'
+      col2: '/projects/expense-1.png'
     },
     github: 'https://github.com/SupremeNexas/Expense-Tracker',
-    website: 'https://www.monerva.com/'
+    website: 'https://expense-tracker-eight-pi-69.vercel.app/'
   },
   {
     number: '02',
-    category: 'Node.js, Next.js, Turbopack, Electron, SQLite, Smart Routing',
-    name: 'OmniRoute (Contribution & Configuration)',
+    category: 'Node.js, Next.js, Electron, SQLite, AI Routing',
+    name: 'OmniRoute — Local AI Gateway & Smart Routing',
     bullets: [
-      'Built a local multi-provider AI gateway using Node.js, Next.js, and Electron to route queries dynamically across model endpoints.',
-      'Implemented custom bundler patches to resolve critical Next.js Turbopack standalone compilation and build errors.',
-      'Integrated an SQLite database schema for persistent offline query logs alongside a robust DuckDuckGo web search fallback.',
-      'Optimized smart routing algorithms to balance query latency, provider cost, and API rate-limiting rules.'
+      'Built a local AI gateway that intelligently routes requests across multiple model providers from a single unified interface.',
+      'Engineered dynamic model selection to balance response latency, provider availability, API limits, and usage cost.',
+      'Added persistent offline query logging with SQLite and an integrated web-search fallback for resilient information retrieval.',
+      'Developed and maintained custom Next.js/Turbopack build patches to overcome standalone compilation issues and ensure reliable local deployment.'
     ],
     images: {
       col1: [
@@ -43,13 +43,13 @@ const projects = [
   },
   {
     number: '03',
-    category: 'Python, PyTorch, Hugging Face Hub, Microsoft Qlib, Quantitative Trading',
-    name: 'Kronos Foundation Model',
+    category: 'Python, PyTorch, Qlib, Hugging Face, Quantitative AI',
+    name: 'Kronos — AI-Powered Quantitative Trading Model',
     bullets: [
       'Developed an autoregressive financial K-line transformer foundation model using Python and PyTorch.',
       'Pre-trained custom architectures on market data representing 45 global stock exchanges to capture cross-market temporal patterns.',
-      'Fine-tuned models using Microsoft Qlib and Hugging Face Hub for optimal trading strategy performance in Chinese A-Share markets.',
-      'Constructed end-to-end backtesting pipelines to validate model decisions against historical order books and market execution limits.'
+      'Fine-tuned models using Microsoft Qlib and Hugging Face Hub for trading strategy research in Chinese A-Share markets.',
+      'Built end-to-end backtesting pipelines to evaluate model decisions against historical order books and market execution constraints.'
     ],
     images: {
       col1: [
@@ -62,13 +62,13 @@ const projects = [
   },
   {
     number: '04',
-    category: 'Node.js, Go, Playwright, Bubble Tea',
-    name: 'CareerOps Job Search Engine',
+    category: 'Node.js, Go, Playwright, Automation, Agentic Workflows',
+    name: 'CareerOps — Agentic Job Search & Automation Platform',
     bullets: [
-      'Engineered an automated multi-agent job application system utilizing Node.js, Go, and Playwright browser orchestration.',
-      'Constructed a resume ATS compiler that aligns structure and keywords with resume parser scoring algorithms.',
-      'Designed a terminal user interface (TUI) dashboard using Go and the Bubble Tea library for tracking job statuses in real-time.',
-      'Integrated automated workflow pipelines that execute form fills, solve captchas, and archive application receipts.'
+      'Engineered an automated job search and application platform using Node.js, Go, and Playwright browser orchestration.',
+      'Built an ATS-focused resume compiler that dynamically aligns resume structure and keywords with job requirements.',
+      'Developed a Go-based terminal dashboard with Bubble Tea for real-time application tracking and workflow management.',
+      'Designed automated pipelines for job discovery, application workflows, form submission, and application record archiving.'
     ],
     images: {
       col1: [
@@ -81,13 +81,13 @@ const projects = [
   },
   {
     number: '05',
-    category: 'Python, Scikit-learn, LightGBM, XGBoost, Streamlit',
-    name: 'Dynamic Taxi Demand Forecasting',
+    category: 'Python, Scikit-learn, LightGBM, XGBoost, Streamlit, Predictive Analytics',
+    name: 'Dynamic Taxi — Demand Forecasting & Pricing Engine',
     bullets: [
-      'Developed a spatial-temporal demand forecaster and pricing engine built with Scikit-learn, LightGBM, and XGBoost.',
-      'Implemented a revenue optimization algorithm that resulted in a simulated 22.23% increase in revenue outcomes.',
-      'Built an interactive real-time dashboard application in Python using Streamlit for monitoring demand density maps.',
-      'Engineered feature pipelines to handle spatial location grids, seasonal patterns, and weather metadata inputs.'
+      'Developed a spatial-temporal demand forecasting and dynamic pricing engine using Scikit-learn, LightGBM, and XGBoost.',
+      'Engineered a revenue optimization model that achieved a simulated 22.23% increase in revenue outcomes on the evaluation scenario.',
+      'Built an interactive Streamlit dashboard for monitoring demand patterns and spatial density across taxi zones.',
+      'Designed feature pipelines incorporating location grids, seasonal trends, and weather metadata for demand prediction.'
     ],
     images: {
       col1: [
@@ -100,13 +100,13 @@ const projects = [
   },
   {
     number: '06',
-    category: 'Node.js, Express, PostgreSQL, EJS',
-    name: 'SocialQuery',
+    category: 'Node.js, Express, PostgreSQL, EJS, SQL Analytics',
+    name: 'SocialQuery — Social Media Analytics Engine',
     bullets: [
-      'Built a full-stack social media relational data engine in Node.js and Express database layers.',
-      'Implemented 10+ complex analytic SQL queries for profile visitor insights, unfollow detection, and trend analysis.',
-      'Designed a responsive frontend with EJS templates and modular architecture components for seamless UI navigation.',
-      'Achieved database rendering speeds under 100ms through indexed table joins and parameterized PostgreSQL queries.'
+      'Built a full-stack social media analytics platform using Node.js, Express, PostgreSQL, and EJS.',
+      'Engineered 10+ complex SQL analytics queries for profile visitor insights, unfollow detection, engagement patterns, and trend analysis.',
+      'Designed a modular EJS-based frontend with responsive interfaces and structured navigation.',
+      'Optimized PostgreSQL queries through indexed joins and parameterized queries, achieving sub-100ms database response times in the tested environment.'
     ],
     images: {
       col1: [
@@ -119,134 +119,115 @@ const projects = [
   }
 ]
 
-function ProjectCard({ project, index, totalCards }: { project: typeof projects[0], index: number, totalCards: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ['start end', 'start start']
-  })
-
-  const targetScale = 1 - (totalCards - 1 - index) * 0.03
-  const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
-
-  return (
-    <div
-      ref={cardRef}
-      className="sticky z-10"
-      style={{
-        height: '85vh',
-        top: `calc(6rem + ${index * 28}px)`,
-      }}
-    >
-      <motion.div
-        style={{ scale, willChange: 'transform' }}
-        className="bg-[#080808] border border-[#212121] shadow-2xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-6 sm:p-8 md:p-10 h-full flex flex-col gap-4 sm:gap-6 overflow-hidden"
-      >
-        {/* Top Row */}
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div className="flex items-start gap-4 sm:gap-6 md:gap-8">
-            <div
-              className="text-[#D7E2EA] font-black flex-shrink-0"
-              style={{ fontSize: 'clamp(3rem, 10vw, 140px)', lineHeight: '0.85' }}
-            >
-              {project.number}
-            </div>
-
-            <div className="flex flex-col justify-center">
-              <p className="text-[#D7E2EA] font-light uppercase tracking-wide text-xs sm:text-sm opacity-60">
-                {project.category}
-              </p>
-              <h3
-                className="text-[#D7E2EA] font-medium uppercase mt-1"
-                style={{ fontSize: 'clamp(1.2rem, 2.5vw, 2.5rem)' }}
-              >
-                {project.name}
-              </h3>
-            </div>
-          </div>
-
-          {project.website ? (
-            <a
-              href={project.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-[#212121] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-            >
-              Visit Website
-            </a>
-          ) : (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-[#212121] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-            >
-              GitHub Code
-            </a>
-          )}
-        </div>
-
-        {/* Info & Grid Column Layout */}
-        <div className="flex flex-col lg:flex-row gap-6 flex-1 overflow-hidden">
-          {/* Bullets List Context */}
-          <div className="flex-1 flex flex-col justify-center gap-3">
-            <ul className="list-disc pl-5 text-[#9c9c9c] text-sm sm:text-base leading-relaxed flex flex-col gap-3 font-light">
-              {project.bullets.map((bullet, i) => (
-                <li key={i}>{bullet}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Grid Layout Images */}
-          <div className="flex gap-3 sm:gap-4 flex-1 h-full max-h-[300px] lg:max-h-none overflow-hidden">
-            <div className="flex flex-col gap-3 sm:gap-4 w-1/3">
-              <img
-                src={project.images.col1[0]}
-                alt={`${project.name} UI screenshot 1`}
-                className="w-full h-1/2 rounded-[20px] sm:rounded-[30px] object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                src={project.images.col1[1]}
-                alt={`${project.name} UI screenshot 2`}
-                className="w-full h-1/2 rounded-[20px] sm:rounded-[30px] object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="w-2/3 h-full">
-              <img
-                src={project.images.col2}
-                alt={`${project.name} dashboard overview`}
-                className="w-full h-full rounded-[20px] sm:rounded-[30px] object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  )
-}
-
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 pt-10 sm:pt-12 md:pt-16 pb-0 -mt-10 sm:-mt-12 md:-mt-14 relative z-10">
-      <h2 className="hero-heading font-black uppercase text-center text-5xl sm:text-6xl md:text-7xl leading-none mb-16 sm:mb-20 md:mb-28">
+    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-3 xs:px-5 sm:px-8 md:px-10 pt-6 sm:pt-8 md:pt-10 pb-0 -mt-6 sm:-mt-8 relative z-10">
+      <h2 className="hero-heading font-black uppercase text-center text-4xl xs:text-5xl sm:text-6xl md:text-7xl leading-none mb-6 sm:mb-8">
         Projects
       </h2>
 
       <div className="max-w-7xl mx-auto">
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={i}
-            project={project}
-            index={i}
-            totalCards={projects.length}
-          />
-        ))}
+        <ScrollStack
+          useWindowScroll={true}
+          itemDistance={24}
+          itemScale={0.03}
+          itemStackDistance={18}
+          stackPosition="12%"
+          scaleEndPosition="6%"
+          baseScale={0.9}
+        >
+          {projects.map((project, i) => (
+            <ScrollStackItem
+              key={i}
+              itemClassName="bg-[#080808] border border-[#212121] shadow-2xl rounded-[32px] xs:rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-5 xs:p-6 sm:p-8 md:p-10 !h-auto min-h-[480px] lg:min-h-[580px] flex flex-col justify-between gap-4 sm:gap-6"
+            >
+              {/* Top Row: Number, Category, Title, Button */}
+              <div className="flex items-start justify-between gap-4 flex-wrap w-full">
+                <div className="flex items-start gap-4 sm:gap-6 md:gap-8 min-w-0 flex-1">
+                  <div
+                    className="text-[#D7E2EA] font-black flex-shrink-0 select-none text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.85]"
+                  >
+                    {project.number}
+                  </div>
+
+                  <div className="flex flex-col justify-center min-w-0 flex-1">
+                    <p className="text-[#D7E2EA] font-light uppercase tracking-wide text-xs sm:text-sm opacity-60 truncate">
+                      {project.category}
+                    </p>
+                    <h3
+                      className="text-[#D7E2EA] font-medium uppercase mt-1 text-lg xs:text-xl sm:text-2xl md:text-3xl leading-snug break-words"
+                    >
+                      {project.name}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="shrink-0 self-start">
+                  {project.website ? (
+                    <a
+                      href={project.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-[#333333] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 whitespace-nowrap"
+                    >
+                      Visit Website
+                    </a>
+                  ) : (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-[#333333] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 whitespace-nowrap"
+                    >
+                      GitHub Code
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Info & Grid Column Layout */}
+              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 flex-1 overflow-hidden">
+                {/* Bullets List Context */}
+                <div className="flex-1 flex flex-col justify-center">
+                  <ul className="list-disc pl-5 text-[#9c9c9c] text-xs xs:text-sm sm:text-base leading-relaxed flex flex-col gap-2.5 sm:gap-3 font-light">
+                    {project.bullets.map((bullet, idx) => (
+                      <li key={idx} className="leading-normal">{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Grid Layout Images */}
+                <div className="flex gap-3 sm:gap-4 flex-1 h-44 xs:h-52 sm:h-64 lg:h-64 xl:h-72 overflow-hidden shrink-0">
+                  <div className="flex flex-col gap-3 sm:gap-4 w-1/3 h-full">
+                    <img
+                      src={project.images.col1[0]}
+                      alt={`${project.name} UI screenshot 1`}
+                      className="w-full h-1/2 rounded-[16px] sm:rounded-[24px] object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <img
+                      src={project.images.col1[1]}
+                      alt={`${project.name} UI screenshot 2`}
+                      className="w-full h-1/2 rounded-[16px] sm:rounded-[24px] object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="w-2/3 h-full">
+                    <img
+                      src={project.images.col2}
+                      alt={`${project.name} dashboard overview`}
+                      className="w-full h-full rounded-[16px] sm:rounded-[24px] object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </ScrollStackItem>
+          ))}
+        </ScrollStack>
       </div>
     </section>
   )

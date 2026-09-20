@@ -1,40 +1,15 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { useEffect } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import CustomCursor from './components/CustomCursor'
 import HeroSection from './components/HeroSection'
 import HandToAction from './components/HandToAction'
-
-const AboutSection = lazy(() => import('./components/AboutSection'))
-const ProjectsSection = lazy(() => import('./components/ProjectsSection'))
-const CertificationsSection = lazy(() => import('./components/CertificationsSection'))
-const GitHubStatsSection = lazy(() => import('./components/GitHubStatsSection'))
-const InternshipSection = lazy(() => import('./components/InternshipSection'))
-const ContactSection = lazy(() => import('./components/ContactSection'))
-
-const MinimalLoader = () => (
-  <div style={{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '4rem 2rem',
-    color: '#8b8b8b',
-    fontFamily: 'monospace',
-    letterSpacing: '0.05em'
-  }}>
-    <span style={{
-      animation: 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-    }}>
-      loading segments...
-    </span>
-    <style>{`
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: .5; }
-      }
-    `}</style>
-  </div>
-)
+import AboutSection from './components/AboutSection'
+import ProjectsSection from './components/ProjectsSection'
+import CertificationsSection from './components/CertificationsSection'
+import GitHubStatsSection from './components/GitHubStatsSection'
+import InternshipSection from './components/InternshipSection'
+import ContactSection from './components/ContactSection'
 
 function App() {
   useEffect(() => {
@@ -70,15 +45,13 @@ function App() {
       <CustomCursor />
       <HeroSection />
       {/* <MarqueeSection /> */}
-      <Suspense fallback={<MinimalLoader />}>
-        <AboutSection />
-        <InternshipSection />
-        <ProjectsSection />
-        <CertificationsSection />
-        <GitHubStatsSection />
-        <HandToAction />
-        <ContactSection />
-      </Suspense>
+      <AboutSection />
+      <InternshipSection />
+      <ProjectsSection />
+      <CertificationsSection />
+      <GitHubStatsSection />
+      <HandToAction />
+      <ContactSection />
     </div>
   )
 }

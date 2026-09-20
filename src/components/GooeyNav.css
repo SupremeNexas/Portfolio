@@ -29,24 +29,53 @@
 
 .gooey-nav-container {
   position: relative;
+  max-width: 100%;
 }
 
 .gooey-nav-container nav {
   display: flex;
   position: relative;
+  justify-content: center;
   transform: translate3d(0, 0, 0.01px);
 }
 
 .gooey-nav-container nav ul {
   display: flex;
-  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
   list-style: none;
-  padding: 0 1em;
+  padding: 0 0.25rem;
   margin: 0;
   position: relative;
   z-index: 3;
   color: white;
   text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
+  font-size: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .gooey-nav-container nav ul {
+    gap: 0.65rem;
+    padding: 0 0.5rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .gooey-nav-container nav ul {
+    gap: 1.25rem;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gooey-nav-container nav ul {
+    gap: 2em;
+    padding: 0 1em;
+    font-size: 1rem;
+  }
 }
 
 .gooey-nav-container nav ul li {
@@ -59,11 +88,32 @@
     box-shadow 0.3s ease;
   box-shadow: 0 0 0.5px 1.5px transparent;
   color: white;
+  white-space: nowrap;
 }
 
 .gooey-nav-container nav ul li a {
   display: inline-block;
-  padding: 0.6em 1em;
+  padding: 0.4em 0.6em;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 480px) {
+  .gooey-nav-container nav ul li a {
+    padding: 0.45em 0.75em;
+  }
+}
+
+@media (min-width: 640px) {
+  .gooey-nav-container nav ul li a {
+    padding: 0.5em 0.85em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gooey-nav-container nav ul li a {
+    padding: 0.6em 1em;
+  }
 }
 
 .gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
@@ -108,6 +158,25 @@
 .gooey-nav-container .effect.text {
   color: white;
   transition: color 0.3s ease;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .gooey-nav-container .effect.text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .gooey-nav-container .effect.text {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gooey-nav-container .effect.text {
+    font-size: 1rem;
+  }
 }
 
 .gooey-nav-container .effect.text.active {

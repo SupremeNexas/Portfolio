@@ -8,7 +8,7 @@
     --color-carbon: #0c0c0c;
     --color-chalk: #fcfcfc;
     --color-smoke: #8a8a8a;
-    --color-graphite: #1a1a1a;
+    --color-graphite: #212121;
     --color-signal-white: #ffffff;
     --color-compass-gold: #6f6759;
   }
@@ -17,19 +17,34 @@
     background-color: var(--color-obsidian);
     color: var(--color-chalk);
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   body {
-    /* Reverted to Inter as original design */
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: var(--color-obsidian);
+    color: var(--color-chalk);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100%;
   }
 
-  /* Hide scrollbar */
+  /* Prevent any unintentional horizontal scrolling site-wide */
+  #root {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  /* Hide scrollbar by default for seamless aesthetics, while keeping touch scrolling smooth */
   ::-webkit-scrollbar {
     display: none;
+  }
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   /* Apply to all, including focus states */
@@ -37,58 +52,90 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: none; /* Zero outlines */
   }
 }
 
 .hero-heading {
   color: var(--color-chalk);
-  /* Weight 400 requested in original */
-  font-weight: 400;
+  font-weight: 900;
+  letter-spacing: -0.03em;
 }
 
 .contact-btn {
   background-color: var(--color-signal-white);
   color: var(--color-obsidian);
   border-radius: 9999px;
-  padding: 12px 28px;
-  font-weight: 500;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  padding: 10px 24px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .contact-btn {
+    padding: 12px 28px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-btn {
+    padding: 14px 34px;
+    font-size: 0.9375rem;
+  }
 }
 
 .contact-btn:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
   opacity: 0.95;
 }
 
-.live-btn {
-  border: 1px solid var(--color-graphite);
-  border-radius: 8px;
-  color: var(--color-chalk);
-  padding: 10px 20px;
-  background: transparent;
-  transition: background 0.3s ease;
-}
-
-.live-btn:hover {
-  background: var(--color-graphite);
+.contact-btn:active {
+  transform: scale(0.98);
 }
 
 .card-premium {
   background: var(--color-carbon);
   border: 1px solid var(--color-graphite);
-  border-radius: 24px;
+  border-radius: 20px;
   transition: border-color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
+@media (min-width: 640px) {
+  .card-premium {
+    border-radius: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-premium {
+    border-radius: 36px;
+  }
+}
+
 .card-premium:hover {
-  border-color: #333;
+  border-color: #333333;
 }
 
 .glass-pill {
   background: transparent;
   border: 1px solid var(--color-graphite);
   color: var(--color-smoke);
-  border-radius: 4px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+}
+
+/* Horizontal scroll styling for interactive widgets on small touch screens */
+.touch-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
