@@ -15,7 +15,6 @@ interface CertificateModalProps {
 
 export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate, onClose }) => {
   const modalContentRef = useRef<HTMLDivElement>(null);
-  const hasEnteredModalRef = useRef<boolean>(false);
 
   // 1. Prevent background scrolling while popup is open & restore when closed
   useEffect(() => {
@@ -29,9 +28,6 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
     if (scrollbarWidth > 0) {
       document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
-
-    // Reset cursor entry tracker on open
-    hasEnteredModalRef.current = false;
 
     // Handle Escape key
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -74,16 +70,6 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-6xl max-h-[94vh] h-[90vh] bg-[#0c0c0c] border border-[#262626] rounded-[20px] xs:rounded-[24px] sm:rounded-[28px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden text-left"
             onClick={(e) => e.stopPropagation()}
-            onMouseEnter={() => {
-              // Cursor has entered the popup
-              hasEnteredModalRef.current = true;
-            }}
-            onMouseLeave={() => {
-              // Specifically close when cursor moves OUTSIDE after having entered
-              if (hasEnteredModalRef.current) {
-                onClose();
-              }
-            }}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between px-4 xs:px-6 py-3 sm:py-3.5 border-b border-[#1f1f1f] bg-[#0f0f0f]/90 shrink-0">
