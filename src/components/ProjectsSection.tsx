@@ -20,7 +20,8 @@ const projects = [
       col2: '/projects/expense-1.png'
     },
     github: 'https://github.com/SupremeNexas/Expense-Tracker',
-    website: 'https://expense-tracker-eight-pi-69.vercel.app/'
+    website: 'https://expense-tracker-eight-pi-69.vercel.app/',
+    architecture: '/projects/monerva/architecture/'
   },
   {
     number: '02',
@@ -162,8 +163,19 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                <div className="shrink-0 self-start">
-                  {project.website ? (
+                <div className="shrink-0 self-start flex items-center gap-2 sm:gap-3 flex-wrap">
+                  {project.architecture && (
+                    <a
+                      href={project.architecture}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 font-medium uppercase tracking-wider px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm hover:bg-emerald-500 hover:text-black hover:border-emerald-500 transition-all duration-300 whitespace-nowrap gap-2 shadow-[0_0_20px_rgba(16,185,129,0.15)] active:scale-95"
+                    >
+                      <span>Architecture</span>
+                      <span className="text-xs">↗</span>
+                    </a>
+                  )}
+                  {project.website && (
                     <a
                       href={project.website}
                       target="_blank"
@@ -172,12 +184,13 @@ export default function ProjectsSection() {
                     >
                       Visit Website
                     </a>
-                  ) : (
+                  )}
+                  {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-full border border-[#333333] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 whitespace-nowrap"
+                      className="inline-flex items-center justify-center rounded-full border border-[#333333] bg-transparent text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 whitespace-nowrap"
                     >
                       GitHub Code
                     </a>
@@ -194,6 +207,24 @@ export default function ProjectsSection() {
                       <li key={idx} className="leading-normal">{bullet}</li>
                     ))}
                   </ul>
+
+                  {project.architecture && (
+                    <div className="mt-4 pt-3.5 border-t border-[#1C1C1C] flex items-center justify-between gap-3 flex-wrap">
+                      <div className="flex items-center gap-2 text-xs text-[#888888]">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>9 Interactive Architecture & AI Pipeline Views</span>
+                      </div>
+                      <a
+                        href={project.architecture}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-wider group py-1"
+                      >
+                        <span>Explore System Architecture</span>
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* Grid Layout Images */}

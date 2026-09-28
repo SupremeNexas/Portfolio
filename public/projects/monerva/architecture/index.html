@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monerva Architecture Explorer | Supriyo's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #090A0F;
+      --bg-panel: rgba(18, 20, 29, 0.85);
+      --bg-panel-solid: #12141D;
+      --bg-card: #171926;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(16, 185, 129, 0.4);
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --accent-emerald: #10B981;
+      --accent-emerald-glow: rgba(16, 185, 129, 0.15);
+      --accent-cyan: #06B6D4;
+      --accent-violet: #8B5CF6;
+      --header-height: 64px;
+    }
+
+    [data-theme="light"] {
+      --bg-canvas: #F8FAFC;
+      --bg-panel: rgba(255, 255, 255, 0.9);
+      --bg-panel-solid: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-active: rgba(16, 185, 129, 0.5);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-emerald: #059669;
+      --accent-emerald-glow: rgba(5, 150, 105, 0.12);
+      --accent-cyan: #0891B2;
+      --accent-violet: #7C3AED;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Header */
+    header.suite-header {
+      height: var(--header-height);
+      background: var(--bg-panel);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 100;
+      flex-shrink: 0;
+      gap: 12px;
+    }
+
+    .left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .back-btn:hover {
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+      transform: translateX(-2px);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #10B981, #06B6D4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #FFFFFF;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Tabs Bar */
+    nav.suite-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 0 4px;
+      scrollbar-width: none;
+      flex: 1;
+      justify-content: center;
+    }
+
+    nav.suite-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    [data-theme="light"] .tab-btn:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .tab-btn.active {
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .tab-btn .tab-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+
+    /* Actions Header Controls */
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .ctrl-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.15s ease;
+    }
+
+    .ctrl-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-emerald);
+      transform: translateY(-1px);
+    }
+
+    /* Main Viewport Container */
+    main.diagram-stage {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      overflow: hidden;
+    }
+
+    .diagram-panel {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      border: none;
+    }
+
+    .diagram-panel.active {
+      display: block;
+    }
+
+    .diagram-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Keyboard Shortcut Help Toast */
+    .shortcut-hint {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: var(--bg-panel-solid);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .shortcut-hint kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 900px) {
+      .brand-sub { display: none; }
+      .shortcut-hint { display: none; }
+      header.suite-header {
+        height: auto;
+        padding: 8px 12px;
+        flex-wrap: wrap;
+      }
+      nav.suite-tabs {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 4px 0 2px 0;
+      }
+      main.diagram-stage {
+        height: calc(100vh - 100px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Persistent Header Navigation -->
+  <header class="suite-header">
+    <div class="left-group">
+      <a href="/#projects" class="back-btn" title="Back to Portfolio Projects">
+        <span>←</span>
+        <span>Back to Monerva</span>
+      </a>
+
+      <div class="brand-group">
+        <div class="logo-badge">M</div>
+        <div class="brand-info">
+          <div class="brand-title">
+            <span>Monerva Architecture</span>
+          </div>
+          <span class="brand-sub">React 19 • Express • PostgreSQL • Gemini AI</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="suite-tabs" id="tabNav">
+      <button class="tab-btn active" data-target="overview" onclick="switchTab('overview')">
+        <span class="tab-num">1</span>
+        <span>Overview</span>
+      </button>
+      <button class="tab-btn" data-target="frontend" onclick="switchTab('frontend')">
+        <span class="tab-num">2</span>
+        <span>Frontend</span>
+      </button>
+      <button class="tab-btn" data-target="backend" onclick="switchTab('backend')">
+        <span class="tab-num">3</span>
+        <span>Backend</span>
+      </button>
+      <button class="tab-btn" data-target="database" onclick="switchTab('database')">
+        <span class="tab-num">4</span>
+        <span>Database</span>
+      </button>
+      <button class="tab-btn" data-target="auth" onclick="switchTab('auth')">
+        <span class="tab-num">5</span>
+        <span>Authentication</span>
+      </button>
+      <button class="tab-btn" data-target="ai" onclick="switchTab('ai')">
+        <span class="tab-num">6</span>
+        <span>AI / OKF / RAG</span>
+      </button>
+      <button class="tab-btn" data-target="userflows" onclick="switchTab('userflows')">
+        <span class="tab-num">7</span>
+        <span>User Flows</span>
+      </button>
+      <button class="tab-btn" data-target="integrations" onclick="switchTab('integrations')">
+        <span class="tab-num">8</span>
+        <span>Integrations</span>
+      </button>
+      <button class="tab-btn" data-target="deployment" onclick="switchTab('deployment')">
+        <span class="tab-num">9</span>
+        <span>Deployment</span>
+      </button>
+    </nav>
+
+    <div class="header-controls">
+      <button class="ctrl-btn" onclick="toggleTheme()" title="Toggle Light / Dark Mode (Key: T)">
+        <span id="themeIcon">☀️</span>
+      </button>
+      <button class="ctrl-btn" onclick="toggleFullscreen()" title="Fullscreen / Presentation Mode (Key: F)">
+        ⛶
+      </button>
+      <button class="ctrl-btn" onclick="openActiveStandalone()" title="Open Current Diagram in New Tab">
+        ↗
+      </button>
+    </div>
+  </header>
+
+  <!-- Multi-Diagram Content Stage -->
+  <main class="diagram-stage">
+    <div class="diagram-panel active" id="panel-overview">
+      <iframe class="diagram-frame" id="frame-overview" title="High-Level System Architecture" src="01-overview.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-frontend">
+      <iframe class="diagram-frame" id="frame-frontend" title="Frontend Component & State Architecture" src="02-frontend.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-backend">
+      <iframe class="diagram-frame" id="frame-backend" title="Backend / API & Middleware Pipeline" src="03-backend.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-database">
+      <iframe class="diagram-frame" id="frame-database" title="Database & Relational Data Flow" src="04-database.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-auth">
+      <iframe class="diagram-frame" id="frame-auth" title="Authentication & Identity Lifecycle" src="05-auth.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-ai">
+      <iframe class="diagram-frame" id="frame-ai" title="Deterministic AI, OKF & RAG Pipeline" src="06-ai.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-userflows">
+      <iframe class="diagram-frame" id="frame-userflows" title="Core User Flows & Request Sequences" src="07-userflows.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-integrations">
+      <iframe class="diagram-frame" id="frame-integrations" title="External Integrations & SaaS Ecosystem" src="08-integrations.html"></iframe>
+    </div>
+    <div class="diagram-panel" id="panel-deployment">
+      <iframe class="diagram-frame" id="frame-deployment" title="Production Cloud Deployment Architecture" src="09-deployment.html"></iframe>
+    </div>
+  </main>
+
+  <div class="shortcut-hint">
+    <span><kbd>1</kbd>–<kbd>9</kbd> Tab</span>
+    <span><kbd>T</kbd> Theme</span>
+    <span><kbd>F</kbd> Fullscreen</span>
+    <span><kbd>Esc</kbd> Back</span>
+  </div>
+
+  <script>
+    const DIAGRAM_FILES = {
+      overview: '01-overview.html',
+      frontend: '02-frontend.html',
+      backend: '03-backend.html',
+      database: '04-database.html',
+      auth: '05-auth.html',
+      ai: '06-ai.html',
+      userflows: '07-userflows.html',
+      integrations: '08-integrations.html',
+      deployment: '09-deployment.html'
+    };
+
+    const TAB_ORDER = ['overview', 'frontend', 'backend', 'database', 'auth', 'ai', 'userflows', 'integrations', 'deployment'];
+
+    let currentTheme = localStorage.getItem('archify-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon();
+
+    function updateThemeIcon() {
+      const icon = document.getElementById('themeIcon');
+      if (icon) {
+        icon.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+      }
+    }
+
+    function switchTab(targetId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-target') === targetId);
+      });
+
+      document.querySelectorAll('.diagram-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'panel-' + targetId);
+      });
+
+      syncThemeToIframe(targetId);
+      history.replaceState(null, '', '#' + targetId);
+    }
+
+    function toggleTheme() {
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('archify-theme', currentTheme);
+      updateThemeIcon();
+
+      document.querySelectorAll('.diagram-frame').forEach(frame => {
+        try {
+          if (frame.contentDocument) {
+            frame.contentDocument.documentElement.setAttribute('data-theme', currentTheme);
+          }
+        } catch (_) {}
+      });
+    }
+
+    function syncThemeToIframe(targetId) {
+      const frame = document.getElementById('frame-' + targetId);
+      if (frame) {
+        try {
+          if (frame.contentDocument) {
+            frame.contentDocument.documentElement.setAttribute('data-theme', currentTheme);
+          }
+        } catch (_) {}
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    function openActiveStandalone() {
+      const activeBtn = document.querySelector('.tab-btn.active');
+      const targetId = activeBtn ? activeBtn.getAttribute('data-target') : 'overview';
+      const file = DIAGRAM_FILES[targetId];
+      if (file) {
+        window.open(file, '_blank');
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      const num = parseInt(e.key, 10);
+      if (num >= 1 && num <= TAB_ORDER.length) {
+        const target = TAB_ORDER[num - 1];
+        if (target) switchTab(target);
+      } else if (e.key === 't' || e.key === 'T') {
+        toggleTheme();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      } else if (e.key === 'Escape' || e.key === 'b' || e.key === 'B') {
+        window.location.href = '/#projects';
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && TAB_ORDER.includes(hash)) {
+        switchTab(hash);
+      }
+    });
+  </script>
+</body>
+</html>
