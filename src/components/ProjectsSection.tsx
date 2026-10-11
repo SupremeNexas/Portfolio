@@ -19,12 +19,49 @@ const projects = [
       ],
       col2: '/projects/expense-1.png'
     },
-    github: 'https://github.com/SupremeNexas/Expense-Tracker',
-    website: 'https://expense-tracker-eight-pi-69.vercel.app/',
+    website: 'https://www.monerva.online/',
     architecture: '/projects/monerva/architecture/'
   },
   {
     number: '02',
+    category: 'Python, PyTorch, Qlib, Hugging Face, Quantitative AI',
+    name: 'Kronos — AI-Powered Quantitative Trading Model',
+    bullets: [
+      'Developed an autoregressive financial K-line transformer foundation model using Python and PyTorch.',
+      'Pre-trained custom architectures on market data representing 45 global stock exchanges to capture cross-market temporal patterns.',
+      'Fine-tuned models using Microsoft Qlib and Hugging Face Hub for trading strategy research in Chinese A-Share markets.',
+      'Built end-to-end backtesting pipelines to evaluate model decisions against historical order books and market execution constraints.'
+    ],
+    images: {
+      col1: [
+        '/projects/kronos-3.webp',
+        '/projects/kronos-2.webp'
+      ],
+      col2: '/projects/kronos-1.webp'
+    },
+    github: 'https://github.com/SupremeNexas/Kronos-Trading'
+  },
+  {
+    number: '03',
+    category: 'Node.js, Go, Playwright, Automation, Agentic Workflows',
+    name: 'JobSuite — Agentic Job Search & Automation Platform',
+    bullets: [
+      'Engineered an automated job search and application platform using Node.js, Go, and Playwright browser orchestration.',
+      'Built an ATS-focused resume compiler that dynamically aligns resume structure and keywords with job requirements.',
+      'Developed a Go-based terminal dashboard with Bubble Tea for real-time application tracking and workflow management.',
+      'Designed automated pipelines for job discovery, application workflows, form submission, and application record archiving.'
+    ],
+    images: {
+      col1: [
+        '/projects/jobsearch-2.png',
+        '/projects/jobsearch-3.png'
+      ],
+      col2: '/projects/jobsearch-1.webp'
+    },
+    github: 'https://github.com/SupremeNexas/jobsearch'
+  },
+  {
+    number: '04',
     category: 'Node.js, Next.js, Electron, SQLite, AI Routing',
     name: 'OmniRoute — Local AI Gateway & Smart Routing',
     bullets: [
@@ -41,44 +78,6 @@ const projects = [
       col2: '/projects/omniroute-3.png'
     },
     github: 'https://github.com/SupremeNexas/OmniRoute'
-  },
-  {
-    number: '03',
-    category: 'Python, PyTorch, Qlib, Hugging Face, Quantitative AI',
-    name: 'Kronos — AI-Powered Quantitative Trading Model',
-    bullets: [
-      'Developed an autoregressive financial K-line transformer foundation model using Python and PyTorch.',
-      'Pre-trained custom architectures on market data representing 45 global stock exchanges to capture cross-market temporal patterns.',
-      'Fine-tuned models using Microsoft Qlib and Hugging Face Hub for trading strategy research in Chinese A-Share markets.',
-      'Built end-to-end backtesting pipelines to evaluate model decisions against historical order books and market execution constraints.'
-    ],
-    images: {
-      col1: [
-        '/projects/kronos-1.png',
-        '/projects/kronos-2.png'
-      ],
-      col2: '/projects/kronos-3.png'
-    },
-    github: 'https://github.com/SupremeNexas/Kronos-Trading'
-  },
-  {
-    number: '04',
-    category: 'Node.js, Go, Playwright, Automation, Agentic Workflows',
-    name: 'CareerOps — Agentic Job Search & Automation Platform',
-    bullets: [
-      'Engineered an automated job search and application platform using Node.js, Go, and Playwright browser orchestration.',
-      'Built an ATS-focused resume compiler that dynamically aligns resume structure and keywords with job requirements.',
-      'Developed a Go-based terminal dashboard with Bubble Tea for real-time application tracking and workflow management.',
-      'Designed automated pipelines for job discovery, application workflows, form submission, and application record archiving.'
-    ],
-    images: {
-      col1: [
-        '/projects/jobsearch-1.jpg',
-        '/projects/jobsearch-2.jpg'
-      ],
-      col2: '/projects/jobsearch-3.jpg'
-    },
-    github: 'https://github.com/SupremeNexas/jobsearch'
   },
   {
     number: '05',
@@ -98,25 +97,6 @@ const projects = [
       col2: '/projects/taxi-3.png'
     },
     github: 'https://github.com/SupremeNexas/dynamic-taxi-demand-pricing'
-  },
-  {
-    number: '06',
-    category: 'Node.js, Express, PostgreSQL, EJS, SQL Analytics',
-    name: 'SocialQuery — Social Media Analytics Engine',
-    bullets: [
-      'Built a full-stack social media analytics platform using Node.js, Express, PostgreSQL, and EJS.',
-      'Engineered 10+ complex SQL analytics queries for profile visitor insights, unfollow detection, engagement patterns, and trend analysis.',
-      'Designed a modular EJS-based frontend with responsive interfaces and structured navigation.',
-      'Optimized PostgreSQL queries through indexed joins and parameterized queries, achieving sub-100ms database response times in the tested environment.'
-    ],
-    images: {
-      col1: [
-        '/projects/social-query-1.png',
-        '/projects/social-query-2.png'
-      ],
-      col2: '/projects/social-query-3.png'
-    },
-    github: 'https://github.com/SupremeNexas/socialQuery'
   }
 ]
 
