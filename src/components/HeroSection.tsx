@@ -8,7 +8,7 @@ export default function HeroSection() {
     { label: 'LinkedIn', href: '#linkedin' },
     { label: 'Contact', href: '#contact' },
     { label: 'Resume', href: '/resume.pdf' },
-    { label: 'GitHub', href: 'https://github.com/SupremeNexas/SupremeNexas' }
+    { label: 'GitHub', href: 'https://github.com/SupremeNexas' }
   ];
 
   return (
